@@ -33,6 +33,7 @@
             const email = form.email.value
             const password = form.password.value 
     
+            spinner.style.display = "block"
             try{
                 const res = await fetch('/login', {
                     method: 'POST',
@@ -40,6 +41,7 @@
                     body: JSON.stringify({ email, password }),
                 })
                 const data = await res.json()
+                spinner.style.display = 'none'
                 console.log(data)
                 if (data.errors){
                     emailError.textContent = data.errors.email

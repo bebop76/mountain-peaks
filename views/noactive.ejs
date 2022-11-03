@@ -26,7 +26,7 @@
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
     const email = form.email.value
-    
+    spinner.style.display = "block"
     try {
       const result = await fetch('/noactive', {
         method: 'POST',
@@ -34,6 +34,7 @@
         body: JSON.stringify({ email })
       })
       const data = await result.json()
+      spinner.style.display = 'none'
       if (data.user){
         console.log(data)
       }else{

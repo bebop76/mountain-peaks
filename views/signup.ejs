@@ -46,6 +46,7 @@
             const password = form.password.value 
             const repPassword = form.repPassword.value
     
+            spinner.style.display = "block"
             try{
                 const res = await fetch('/signup', {
                     method: 'POST',
@@ -53,6 +54,7 @@
                     body: JSON.stringify({ name, email, password, repPassword }),
                 })
                 const data = await res.json()
+                spinner.style.display = 'none'
                 console.log(data)
                 if (data.errors){
                     nameError.textContent = data.errors.name
