@@ -1,0 +1,49 @@
+<%- include('partials/header') -%>
+
+<header>
+    <div class="container">
+
+      <div class="">
+        <img src="asset/mountain-logo.png" alt="">
+      </div>
+      <div class="headings">
+        <form>
+        <h2>Activation</h2>
+        <h3>You must activate your email before see this content</h3>
+
+        <label for="email">Email</label>
+        <input type="text" name="email" required />
+        <p>Insert email for send mail with activation again</p>
+        <button>Send mail</button>
+      </div>
+    </form>
+    </div>
+</header>
+
+<script>
+  const form = document.querySelector('form')
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const email = form.email.value
+    
+    try {
+      const result = await fetch('/noactive', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email })
+      })
+      const data = await result.json()
+      if (data.user){
+        console.log(data)
+      }else{
+        console.log(data.error)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    location.assign('/')
+  })
+</script>
+
+<%- include('partials/footer')  -%>

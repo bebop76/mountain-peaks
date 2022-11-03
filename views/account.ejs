@@ -1,0 +1,22 @@
+<%- include('partials/header') -%>
+<header>
+    <form>
+        <h2>Account</h2>
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= user.name %>" disabled/>
+        
+        <label for="email">Email</label>
+        <input type="text" name="email" value="<%= user.email %>" disabled />
+        <div class="email error"></div>
+    
+        <label for="password">Password</label>
+        <input type="password" name="password" value="password" disabled />
+        <!-- <div class="password error"></div> -->
+    
+    
+        <a class="btn" href="/changepsw">Change password</a>
+    
+    </form>
+</header>
+
+<%- include('partials/footer') -%>

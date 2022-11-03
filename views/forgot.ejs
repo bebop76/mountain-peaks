@@ -1,0 +1,58 @@
+<%- include('partials/header') -%>
+
+<div class="container">
+
+    <form>
+       
+        <h2>Forgot password</h2>
+
+        <label for="email">Email</label>
+        <input type="text" name="email" required />
+        <div class="email error"></div>
+    
+        
+        <button>Send me email</button>
+    
+        <p>If email is registered you will receive a new one</p>
+    </form>
+    </div>
+    
+    <script>
+        const form = document.querySelector('form')
+        // const emailError = document.querySelector('.email.error')
+        // const passwordError = document.querySelector('.password.error')
+    
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            // emailError.textContent = ''
+            // passwordError.textContent = ''
+    
+            const email = form.email.value
+            // const password = form.password.value 
+    
+            try{
+    
+                const res = await fetch('/forgot', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json'},
+                    body: JSON.stringify({ email }),
+                })
+                const data = await res.json()
+                console.log(data)
+                // if (data.errors){
+                //     emailError.textContent = data.errors.email
+                //     passwordError.textContent = data.errors.password
+                // }
+                // if(data.user){
+                //     location.assign('/')
+                // }
+                
+            }catch(err){
+                console.log(err)
+    
+            }
+           
+        })
+    </script>
+
+<%- include('partials/footer') -%>

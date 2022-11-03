@@ -1,0 +1,31 @@
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <nav>
+    <h1><a href="/">Mountain peaks</a></h1>
+    <ul>
+      
+      <% if (user) { %>
+        <li>
+          <div class="dropdown">
+            <div class="dropbtn"><%= user.name %> <i class="fa fa-caret-down"></i></div>
+            <div class="dropdown-content">
+              <a href="/account">Options</a>
+              <a href="/logout">Logout</a>
+            </div>
+          </div> 
+        </li>
+      <% }else{ %>
+
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Signup</a></li>
+      <% } %>
+    </ul>
+  </nav>
