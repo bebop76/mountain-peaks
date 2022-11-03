@@ -1,3 +1,4 @@
+const spinner = document.querySelector(".loader-container")
 const eyes = document.querySelectorAll('.eye')
 const pass = document.querySelectorAll('.psw')
 
